@@ -57,6 +57,18 @@ gem "sassc-rails"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  # RSPEC for testing
+  gem 'rspec-rails'
+
+  # Fixtures replacement
+  gem 'factory_bot_rails'
+
+  # Gem which help for validation
+  gem 'shoulda-matchers', '~> 5.0'
+
+  # for generate fake text
+  gem 'faker'
 end
 
 group :development do
