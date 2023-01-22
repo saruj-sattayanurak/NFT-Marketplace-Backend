@@ -170,7 +170,6 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.1)
     minitest (5.17.0)
     msgpack (1.6.0)
     net-imap (0.3.4)
@@ -183,8 +182,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.14.0)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.14.0-x64-mingw-ucrt)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.5)
@@ -212,7 +210,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.4)
+    rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
     railties (7.0.4.1)
       actionpack (= 7.0.4.1)
@@ -285,6 +283,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2022.7)
+      tzinfo (>= 1.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -305,7 +305,7 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
-  ruby
+  x64-mingw-ucrt
 
 DEPENDENCIES
   aasm
@@ -334,7 +334,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 2.7.3p183
+   ruby 3.2.0p0
 
 BUNDLED WITH
-   2.1.4
+   2.4.5
