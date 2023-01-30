@@ -1,6 +1,6 @@
 ActiveAdmin.register Doorkeeper::Application do
     menu label: "API Access", priority: 10
-    permit_params :name, :scopes, :confidential
+    permit_params :name, :uid, :secret, :scopes, :confidential
   
     index do |f|
       selectable_column
@@ -20,7 +20,7 @@ ActiveAdmin.register Doorkeeper::Application do
       f.inputs do
         f.input :name, input_html: {required: true}
         panel "Scopes" do
-          "Please input you application scope eg. 'read', 'write', 'read write'"
+          "Please input you application scope eg. 'read', 'write', 'read write', 'write read'"
         end
         f.input :scopes, input_html: {required: true}
       end
