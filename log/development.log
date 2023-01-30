@@ -3015,3 +3015,186 @@ Processing by Api::V1::ArtworksController#index as */*
 Completed 200 OK in 10ms (Views: 4.6ms | ActiveRecord: 3.5ms | Allocations: 4588)
 
 
+Started GET "/api/v1/artworks" for ::1 at 2023-01-27 01:36:08 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::ArtworksController#index as */*
+  [1m[36mDoorkeeper::AccessToken Load (0.5ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:3:in `block in <class:BaseController>'
+  [1m[36mCACHE Doorkeeper::AccessToken Load (0.0ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:3:in `block in <class:BaseController>'
+  [1m[36mCACHE Doorkeeper::AccessToken Load (0.0ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:3:in `block in <class:BaseController>'
+  [1m[36mCACHE Doorkeeper::AccessToken Load (0.0ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:3:in `block in <class:BaseController>'
+Filter chain halted as #<Proc:0x000000010e63d468 /Users/saruj/Desktop/Portus-Backend/app/controllers/api/v1/base_controller.rb:2> rendered or redirected
+Completed 401 Unauthorized in 20ms (ActiveRecord: 1.7ms | Allocations: 6941)
+
+
+  [1m[36mArtwork Delete All (1.8ms)[0m  [1m[31mDELETE FROM "artworks"[0m
+Started GET "/" for ::1 at 2023-01-27 01:39:15 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/saruj/.rvm/gems/ruby-3.2.0/gems/railties-7.0.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/saruj/.rvm/gems/ruby-3.2.0/gems/railties-7.0.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.6ms | Allocations: 463)
+Completed 200 OK in 12ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 3154)
+
+
+Started GET "/admin" for ::1 at 2023-01-27 01:39:18 +0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/page/index.html.arb
+  Rendered /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/page/index.html.arb (Duration: 163.7ms | Allocations: 64147)
+Completed 200 OK in 184ms (Views: 165.3ms | ActiveRecord: 5.7ms | Allocations: 72056)
+
+
+Started GET "/admin/doorkeeper_applications" for ::1 at 2023-01-27 01:39:21 +0700
+Processing by Admin::DoorkeeperApplicationsController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb
+  [1m[36mDoorkeeper::Application Load (0.5ms)[0m  [1m[34mSELECT "oauth_applications".* FROM "oauth_applications" ORDER BY "oauth_applications"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb (Duration: 99.9ms | Allocations: 35376)
+Completed 200 OK in 111ms (Views: 101.7ms | ActiveRecord: 2.6ms | Allocations: 39030)
+
+
+Started DELETE "/admin/doorkeeper_applications/2" for ::1 at 2023-01-27 01:39:24 +0700
+Processing by Admin::DoorkeeperApplicationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::Application Load (0.2ms)[0m  [1m[34mSELECT "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDoorkeeper::AccessGrant Delete All (3.8ms)[0m  [1m[31mDELETE FROM "oauth_access_grants" WHERE "oauth_access_grants"."application_id" = $1[0m  [["application_id", 2]]
+  [1m[36mDoorkeeper::AccessToken Delete All (0.3ms)[0m  [1m[31mDELETE FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."application_id" = $1[0m  [["application_id", 2]]
+  [1m[36mDoorkeeper::Application Destroy (1.2ms)[0m  [1m[31mDELETE FROM "oauth_applications" WHERE "oauth_applications"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin/doorkeeper_applications
+Completed 302 Found in 36ms (ActiveRecord: 9.8ms | Allocations: 15126)
+
+
+Started GET "/admin/doorkeeper_applications" for ::1 at 2023-01-27 01:39:24 +0700
+Processing by Admin::DoorkeeperApplicationsController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb
+  [1m[36mDoorkeeper::Application Load (0.3ms)[0m  [1m[34mSELECT "oauth_applications".* FROM "oauth_applications" ORDER BY "oauth_applications"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb (Duration: 29.4ms | Allocations: 22449)
+Completed 200 OK in 33ms (Views: 29.5ms | ActiveRecord: 0.6ms | Allocations: 24298)
+
+
+Started GET "/admin/doorkeeper_applications/new" for ::1 at 2023-01-27 01:40:15 +0700
+Processing by Admin::DoorkeeperApplicationsController#new as HTML
+  [1m[36mAdminUser Load (1.1ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/new.html.arb
+  Rendered /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/new.html.arb (Duration: 62.5ms | Allocations: 37986)
+Completed 200 OK in 79ms (Views: 65.2ms | ActiveRecord: 1.1ms | Allocations: 40055)
+
+
+Started POST "/admin/doorkeeper_applications" for ::1 at 2023-01-27 01:40:27 +0700
+Processing by Admin::DoorkeeperApplicationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "doorkeeper_application"=>{"name"=>"POSTMAN_EXAMPLE", "scopes"=>"read write"}, "commit"=>"Create Application"}
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDoorkeeper::Application Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "oauth_applications" WHERE "oauth_applications"."uid" = $1 LIMIT $2[0m  [["uid", "APhMUUSnO-zW-1sHQZmLaXEQTjb5K7DaGGtL37yJ4Ik"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::Application Create (1.4ms)[0m  [1m[32mINSERT INTO "oauth_applications" ("name", "uid", "secret", "redirect_uri", "scopes", "confidential", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "POSTMAN_EXAMPLE"], ["uid", "APhMUUSnO-zW-1sHQZmLaXEQTjb5K7DaGGtL37yJ4Ik"], ["secret", "[FILTERED]"], ["redirect_uri", nil], ["scopes", "read write"], ["confidential", true], ["created_at", "2023-01-26 18:40:27.490112"], ["updated_at", "2023-01-26 18:40:27.490112"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin/doorkeeper_applications/3
+Completed 302 Found in 23ms (ActiveRecord: 3.4ms | Allocations: 9893)
+
+
+Started GET "/admin/doorkeeper_applications/3" for ::1 at 2023-01-27 01:40:27 +0700
+Processing by Admin::DoorkeeperApplicationsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::Application Load (0.4ms)[0m  [1m[34mSELECT "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/show.html.arb
+  [1m[36mActiveAdmin::Comment Count (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3[0m  [["resource_type", "Doorkeeper::Application"], ["resource_id", 3], ["namespace", "admin"]]
+  ↳ app/admin/doorkeeper_applications.rb:40:in `block (2 levels) in <main>'
+  [1m[36mActiveAdmin::Comment Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3 LIMIT $4 OFFSET $5[0m  [["resource_type", "Doorkeeper::Application"], ["resource_id", 3], ["namespace", "admin"], ["LIMIT", 1], ["OFFSET", 0]]
+  ↳ app/admin/doorkeeper_applications.rb:40:in `block (2 levels) in <main>'
+  Rendered /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/show.html.arb (Duration: 65.5ms | Allocations: 32267)
+Completed 200 OK in 73ms (Views: 53.6ms | ActiveRecord: 15.1ms | Allocations: 35045)
+
+
+Started POST "/oauth/token" for ::1 at 2023-01-27 01:41:36 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"client_credentials", "client_id"=>"APhMUUSnO-zW-1sHQZmLaXEQTjb5K7DaGGtL37yJ4Ik", "client_secret"=>"[FILTERED]", "token"=>{"grant_type"=>"client_credentials", "client_id"=>"APhMUUSnO-zW-1sHQZmLaXEQTjb5K7DaGGtL37yJ4Ik", "client_secret"=>"[FILTERED]"}}
+  [1m[36mDoorkeeper::Application Load (5.9ms)[0m  [1m[34mSELECT "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."uid" = $1 LIMIT $2[0m  [["uid", "APhMUUSnO-zW-1sHQZmLaXEQTjb5K7DaGGtL37yJ4Ik"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDoorkeeper::AccessToken Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Create (3.0ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "application_id", "token", "refresh_token", "expires_in", "revoked_at", "created_at", "scopes", "previous_refresh_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["resource_owner_id", nil], ["application_id", 3], ["token", "[FILTERED]"], ["refresh_token", "[FILTERED]"], ["expires_in", 7200], ["revoked_at", nil], ["created_at", "2023-01-26 18:41:36.742582"], ["scopes", "read write"], ["previous_refresh_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 113ms (Views: 0.3ms | ActiveRecord: 32.0ms | Allocations: 26629)
+
+
+Started GET "/admin/artworks" for ::1 at 2023-01-27 01:42:09 +0700
+Processing by Admin::ArtworksController#index as HTML
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" ORDER BY "artworks"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb (Duration: 478.0ms | Allocations: 79064)
+Completed 200 OK in 537ms (Views: 489.4ms | ActiveRecord: 10.7ms | Allocations: 89428)
+
+
+Started POST "/api/v1/artworks" for ::1 at 2023-01-27 01:42:22 +0700
+Processing by Api::V1::ArtworksController#create as */*
+  Parameters: {"name"=>"example artwork1", "description"=>"example artwork description", "image_url"=>"www.image.com", "price"=>100, "artwork"=>{"name"=>"example artwork1", "description"=>"example artwork description", "image_url"=>"www.image.com", "price"=>100}}
+  [1m[36mDoorkeeper::AccessToken Load (0.5ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:7:in `block in <class:BaseController>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/artworks_controller.rb:23:in `create'
+  [1m[36mArtwork Create (0.8ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "description", "image_url", "status", "created_at", "updated_at", "price") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "example artwork1"], ["description", "example artwork description"], ["image_url", "www.image.com"], ["status", 1], ["created_at", "2023-01-26 18:42:22.664663"], ["updated_at", "2023-01-26 18:42:22.664663"], ["price", 100.0]]
+  ↳ app/controllers/api/v1/artworks_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/artworks_controller.rb:23:in `create'
+Completed 200 OK in 72ms (Views: 1.4ms | ActiveRecord: 3.1ms | Allocations: 6523)
+
+
+Started GET "/admin/artworks" for ::1 at 2023-01-27 01:42:32 +0700
+Processing by Admin::ArtworksController#index as HTML
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" ORDER BY "artworks"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /Users/saruj/.rvm/gems/ruby-3.2.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb (Duration: 49.2ms | Allocations: 34873)
+Completed 200 OK in 55ms (Views: 49.8ms | ActiveRecord: 1.0ms | Allocations: 36700)
+
+
+Started GET "/api/v1/artworks" for ::1 at 2023-01-27 01:42:59 +0700
+Processing by Api::V1::ArtworksController#index as */*
+  [1m[36mDoorkeeper::AccessToken Load (1.6ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:3:in `block in <class:BaseController>'
+  [1m[36mCACHE Doorkeeper::AccessToken Load (0.0ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:3:in `block in <class:BaseController>'
+  [1m[36mCACHE Doorkeeper::AccessToken Load (0.0ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:3:in `block in <class:BaseController>'
+  [1m[36mCACHE Doorkeeper::AccessToken Load (0.0ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:3:in `block in <class:BaseController>'
+Filter chain halted as #<Proc:0x000000010d365020 /Users/saruj/Desktop/Portus-Backend/app/controllers/api/v1/base_controller.rb:2> rendered or redirected
+Completed 401 Unauthorized in 25ms (ActiveRecord: 1.7ms | Allocations: 10810)
+
+
+Started GET "/api/v1/artworks" for ::1 at 2023-01-27 01:43:14 +0700
+Processing by Api::V1::ArtworksController#index as */*
+  [1m[36mDoorkeeper::AccessToken Load (0.7ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:3:in `block in <class:BaseController>'
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  ↳ app/controllers/api/v1/artworks_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 1.1ms | Allocations: 1510)
+
+
+Started GET "/api/v1/artworks/7" for ::1 at 2023-01-27 01:43:35 +0700
+Processing by Api::V1::ArtworksController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mDoorkeeper::AccessToken Load (1.1ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:3:in `block in <class:BaseController>'
+  [1m[36mArtwork Load (1.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/artworks_controller.rb:8:in `show'
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 2.3ms | Allocations: 1869)
+
+
+Started GET "/api/v1/artworks" for ::1 at 2023-01-27 01:43:49 +0700
+Processing by Api::V1::ArtworksController#index as */*
+  [1m[36mDoorkeeper::AccessToken Load (0.7ms)[0m  [1m[34mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = $1 LIMIT $2[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:3:in `block in <class:BaseController>'
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  ↳ app/controllers/api/v1/artworks_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 1.2ms | Allocations: 1468)
+
+
