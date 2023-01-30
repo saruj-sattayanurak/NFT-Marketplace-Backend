@@ -20,7 +20,7 @@ ActiveAdmin.register Doorkeeper::Application do
       f.inputs do
         f.input :name, input_html: {required: true}
         panel "Scopes" do
-          "Please input you application scope eg. 'read', 'write', 'read write', 'write read'"
+          "Please input you application scope eg. 'read', 'write', 'read write'"
         end
         f.input :scopes, input_html: {required: true}
       end
