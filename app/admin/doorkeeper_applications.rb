@@ -1,6 +1,6 @@
 ActiveAdmin.register Doorkeeper::Application do
     menu label: "API Access", priority: 10
-    permit_params :name, :uid, :secret, :scopes, :confidential
+    permit_params :name, :scopes, :confidential
   
     index do |f|
       selectable_column
