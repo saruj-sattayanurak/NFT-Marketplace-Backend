@@ -1,26 +1,44 @@
+require 'eth'
+
 class Api::V1::ArtworksController < Api::V1::BaseController
     def index
-        artworks = Artwork.all
-        render json: {data: artworks}, status: 200
+        cli = Contract::Cli.new
+        nft_list = []
+
+        Artwork.all.each do |artwork|
+            nft_list << cli.nft_data(artwork.id)
+        end
+
+        render json: {data: nft_list}, status: 200
     end
 
     def show
-        artwork = Artwork.find(params[:id])
-        render json: artwork, status: 200
+        # What if id is prese
+        cli = Contract::Cli.new
+        result = cli.nft_data(params[:id].to_i)
+
+        return render_error("NFT not found", 400) unless result.present?
+
+        render json: result, status: 200
     end
   
     def create
+        cli = Contract::Cli.new
         errors_list = validate_params(params)
         return render_error(errors_list, 400) unless errors_list.empty?
 
         artwork = Artwork.new(
             name: params[:name],
-            description: params[:description],
-            image_url: params[:image_url],
-            price: params[:price]
+            description: params[:description]
         )
 
         return render_error(artwork.errors.as_json.values.flatten, 400) unless artwork.save
+
+        # query form database (need fix)
+        foundation_wallet = Figaro.env.wallet_address
+
+        # handle error needed (need fix)
+        cli.mint(foundation_wallet, artwork.id, params[:image_url], params[:price])
 
         render json: artwork, status: 200
     end
