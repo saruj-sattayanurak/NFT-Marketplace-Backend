@@ -34,8 +34,7 @@ class Api::V1::ArtworksController < Api::V1::BaseController
 
         return render_error(artwork.errors.as_json.values.flatten, 400) unless artwork.save
 
-        # query form database (need fix)
-        foundation_wallet = Figaro.env.wallet_address
+        foundation_wallet = get_foundation.wallet_address
 
         # handle error needed (need fix)
         cli.mint(foundation_wallet, artwork.id, params[:image_url], params[:price])
@@ -52,6 +51,12 @@ class Api::V1::ArtworksController < Api::V1::BaseController
       errors_list << "image url can not be null" unless params[:image_url].present?
       errors_list << "price can not be null" unless params[:price].present?
       errors_list
+    end
+
+    def get_foundation
+        encrypted_foundation_identifier = request.headers['Foundation-Identifier']
+        foundation_identifier = JWT.decode(encrypted_foundation_identifier, Figaro.env.jwt_secret_key, 'HS256')[0]["foundation_id"]
+        foundation = Foundation.find_by(id: foundation_identifier)
     end
   end
   
