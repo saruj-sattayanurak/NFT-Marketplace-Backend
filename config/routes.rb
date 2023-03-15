@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :foundations, controllers: { sessions: 'foundations/sessions' }
   use_doorkeeper do
     skip_controllers :authorized_applications, :token_info, :applications, :authorizations
   end
