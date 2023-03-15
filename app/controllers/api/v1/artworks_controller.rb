@@ -36,8 +36,6 @@ class Api::V1::ArtworksController < Api::V1::BaseController
 
         foundation_wallet = get_foundation.wallet_address
 
-        binding.pry
-
         # handle error needed (need fix)
         begin
             cli.mint(foundation_wallet, artwork.id, params[:image_url], params[:price])
