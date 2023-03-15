@@ -4,8 +4,11 @@ class Api::V1::BaseController < ActionController::API
     end
   
     before_action only: [:create] do
-      before_action :authenticate_foundation!
       doorkeeper_authorize! :write
+    end
+    
+    before_action only: [:create] do
+      authenticate_foundation!
     end
   
     rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
