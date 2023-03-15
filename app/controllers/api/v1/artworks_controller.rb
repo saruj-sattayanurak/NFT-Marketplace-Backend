@@ -37,7 +37,11 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         foundation_wallet = get_foundation.wallet_address
 
         # handle error needed (need fix)
-        cli.mint(foundation_wallet, artwork.id, params[:image_url], params[:price])
+        begin
+            cli.mint(foundation_wallet, artwork.id, params[:image_url], params[:price])
+        rescue => e
+            return render_error(e, 400)
+        end
 
         render json: artwork, status: 200
     end
