@@ -6,7 +6,11 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         nft_list = []
 
         Artwork.all.each do |artwork|
-            nft_list << cli.nft_data(artwork.id)
+            begin
+                nft_list << cli.nft_data(artwork.id)
+            rescue
+                # just pass for now
+            end
         end
 
         render json: {data: nft_list}, status: 200
