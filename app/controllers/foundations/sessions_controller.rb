@@ -6,7 +6,7 @@ class Foundations::SessionsController < Devise::SessionsController
     def create
       foundation = Foundation.find_by(email: params[:foundation][:email])
       if foundation && foundation.valid_password?(params[:foundation][:password])
-        render json: { token: JWT.encode({ foundation_id: foundation.id }, Figaro.env.jwt_secret_key, 'HS256') }
+        render json: { token: JWT.encode({ foundation_id: foundation.id }, Figaro.env.jwt_secret_key, 'HS256'), foundation_name: foundation.name }
       else
         render json: { error: 'Invalid email or password' }, status: :unprocessable_entity
       end
