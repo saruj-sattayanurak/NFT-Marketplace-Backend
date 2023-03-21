@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_12_181023) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_21_082608) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_181023) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "foundation_id"
+    t.index ["foundation_id"], name: "index_artworks_on_foundation_id"
   end
 
   create_table "foundations", force: :cascade do |t|
@@ -108,6 +110,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_181023) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  add_foreign_key "artworks", "foundations"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
 end

@@ -27,14 +27,17 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         errors_list = validate_params(params)
         return render_error(errors_list, 400) unless errors_list.empty?
 
+        foundation = get_foundation
+
         artwork = Artwork.new(
             name: params[:name],
-            description: params[:description]
+            description: params[:description],
+            foundation_id: foundation.id
         )
 
         return render_error(artwork.errors.as_json.values.flatten, 400) unless artwork.save
 
-        foundation_wallet = get_foundation.wallet_address
+        foundation_wallet = foundation.wallet_address
 
         # handle error needed (need fix)
         begin

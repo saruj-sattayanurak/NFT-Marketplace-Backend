@@ -1,4 +1,5 @@
 class Artwork < ApplicationRecord
+    belongs_to :foundation, optional: true
     enum status: {unavailable: 0, available: 1}
 
     validates :name, presence: true
