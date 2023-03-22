@@ -34,6 +34,7 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         nft_list = []
 
         Artwork.all.each do |artwork|
+
             begin
                 if cli.getOwner(artwork.id) == address
                     nft_list << cli.nft_data(artwork.id)
@@ -88,9 +89,6 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         encrypted_foundation_identifier = request.headers['Foundation-Identifier']
         foundation_identifier = JWT.decode(encrypted_foundation_identifier, Figaro.env.jwt_secret_key, 'HS256')[0]["foundation_id"]
         foundation = Foundation.find_by(id: foundation_identifier)
-    end
-
-    def getNftOwner(id)
     end
   end
   

@@ -36,7 +36,7 @@ module Contract
         end
 
         def getOwner(id)
-            client.call(@contract, "ownerOf", id)
+            @client.call(@contract, "ownerOf", id)
         end
     end
 end
