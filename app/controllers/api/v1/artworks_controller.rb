@@ -17,13 +17,33 @@ class Api::V1::ArtworksController < Api::V1::BaseController
     end
 
     def show
-        # What if id is prese
+        # What if id is not present
         cli = Contract::Cli.new
         result = cli.nft_data(params[:id].to_i)
 
         return render_error("NFT not found", 400) unless result.present?
 
         render json: result, status: 200
+    end
+
+    def owner
+        return render_error("Address must not be null", 400) unless params[:address].present?
+        
+        cli = Contract::Cli.new
+        address = params[:address]
+        nft_list = []
+
+        Artwork.all.each do |artwork|
+            begin
+                if cli.getOwner(artwork.id) == address
+                    nft_list << cli.nft_data(artwork.id)
+                end
+            rescue
+                # just pass for now
+            end
+        end
+
+        render json: {data: nft_list}, status: 200
     end
   
     def create
@@ -68,6 +88,9 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         encrypted_foundation_identifier = request.headers['Foundation-Identifier']
         foundation_identifier = JWT.decode(encrypted_foundation_identifier, Figaro.env.jwt_secret_key, 'HS256')[0]["foundation_id"]
         foundation = Foundation.find_by(id: foundation_identifier)
+    end
+
+    def getNftOwner(id)
     end
   end
   
