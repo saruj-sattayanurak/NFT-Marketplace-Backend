@@ -28,7 +28,7 @@ class Api::V1::ArtworksController < Api::V1::BaseController
 
     def owner
         return render_error("Address must not be null", 400) unless params[:address].present?
-        
+
         cli = Contract::Cli.new
         address = params[:address]
         nft_list = []
@@ -36,7 +36,7 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         Artwork.all.each do |artwork|
 
             begin
-                if cli.getOwner(artwork.id) == address
+                if cli.getOwner(artwork.id).downcase == address.downcase
                     nft_list << cli.nft_data(artwork.id)
                 end
             rescue
