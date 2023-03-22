@@ -34,5 +34,9 @@ module Contract
             deployer_account.address
             @client.transact_and_wait(@contract, "mint", wallet, id, url, price, sender_key: deployer_account, gas_limit: 200000)
         end
+
+        def getOwner(id)
+            @client.call(@contract, "ownerOf", id)
+        end
     end
 end
