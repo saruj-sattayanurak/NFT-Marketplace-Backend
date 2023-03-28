@@ -46,6 +46,26 @@ class Api::V1::ArtworksController < Api::V1::BaseController
 
         render json: {data: nft_list}, status: 200
     end
+
+    def nft_by_foundation
+        return render_error("Foundation id must not be null", 400) unless params[:foundation_id].present?
+
+        cli = Contract::Cli.new
+        param_foundation_id = params[:foundation_id]
+        nft_list = []
+
+        Artwork.all.each do |artwork|
+            begin
+                if artwork.foundation_id == param_foundation_id
+                    nft_list << cli.nft_data(artwork.id)
+                end
+            rescue
+                # just pass for now
+            end
+        end
+
+        render json: {data: nft_list}, status: 200
+    end
   
     def create
         cli = Contract::Cli.new
