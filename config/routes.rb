@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :artworks, only: [:show, :create, :index]
       get '/artworks/by_owner/:address', to: 'artworks#owner'
+      resources :foundations, only: [:index]
     end
   end
 end
