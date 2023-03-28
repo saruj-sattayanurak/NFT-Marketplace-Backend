@@ -56,7 +56,7 @@ class Api::V1::ArtworksController < Api::V1::BaseController
 
         Artwork.all.each do |artwork|
             begin
-                if artwork.foundation_id == param_foundation_id
+                if artwork.foundation_id.to_s == param_foundation_id.to_s
                     nft_list << cli.nft_data(artwork.id)
                 end
             rescue
