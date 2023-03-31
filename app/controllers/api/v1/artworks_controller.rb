@@ -98,6 +98,8 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         return render_error("id must exist", 400) unless params[:id].present?
         artwork = Artwork.find(params[:id].to_i)
         artwork.unavailable!
+
+        render json: artwork, status: 200
     end
   
     private
