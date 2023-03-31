@@ -93,6 +93,12 @@ class Api::V1::ArtworksController < Api::V1::BaseController
 
         render json: artwork, status: 200
     end
+
+    def sold
+        return render_error("id must exist", 400) unless params[:id].present?
+        artwork = Artwork.find(params[:id].to_i)
+        artwork.unavailable!
+    end
   
     private
   
