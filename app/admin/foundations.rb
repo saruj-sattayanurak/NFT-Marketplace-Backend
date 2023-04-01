@@ -6,7 +6,6 @@ ActiveAdmin.register Foundation do
       id_column
       column :name
       column :foundation_type
-      column :description
       column :foundation_members
       column :location
       column :email
