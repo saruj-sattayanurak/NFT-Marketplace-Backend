@@ -5,7 +5,7 @@ class Api::V1::FoundationsController < Api::V1::BaseController
         Foundation.all.each do |foundation|
             foundation_json_object = {
                 id: foundation.id,
-                name: foundation.name
+                name: foundation.name,
                 first_image: foundation.first_image
             }
             foundation_list << foundation_json_object
