@@ -12,5 +12,11 @@ class Api::V1::FoundationsController < Api::V1::BaseController
 
         render json: {data: foundation_list}, status: 200
     end
+
+    def show
+        foundation = Foundation.find(params[:id].to_i)
+
+        render json: foundation, status: 200
+    end
 end
   

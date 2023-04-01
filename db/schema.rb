@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_21_082608) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_01_162826) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_082608) do
     t.integer "foundation_members"
     t.string "foundation_type"
     t.string "wallet_address"
+    t.string "telephone_number"
+    t.string "first_image"
+    t.string "second_image"
+    t.string "third_image"
     t.index ["email"], name: "index_foundations_on_email", unique: true
     t.index ["reset_password_token"], name: "index_foundations_on_reset_password_token", unique: true
   end
