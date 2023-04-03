@@ -82,7 +82,8 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         artwork = Artwork.new(
             name: params[:name],
             description: params[:description],
-            foundation_id: foundation.id
+            foundation_id: foundation.id,
+            url: params[:image_url]
         )
 
         return render_error(artwork.errors.as_json.values.flatten, 400) unless artwork.save
