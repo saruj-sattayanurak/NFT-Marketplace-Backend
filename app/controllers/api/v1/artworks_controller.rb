@@ -92,9 +92,9 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         metadata = 
         {
             "name": artwork.name,
-            "description": "....",
-            "creator": "...",
-            "foundation_name": "",
+            "description": "This NFT has been created by the Portus NFT project. Our initiative exclusively generates NFTs from artwork that has been crafted by underprivileged children residing in Thailand.",
+            "creator": "Portus NFT project",
+            "foundation_name": foundation.name,
             "image": params[:image_url]
         }
 
