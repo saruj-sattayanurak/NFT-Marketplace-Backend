@@ -25,7 +25,7 @@ module Contract
                 image_url: image_url,
                 price: price,
                 status: artwork.status,
-                foundation_name: artwork&.foundation&.name
+                foundation: {id: artwork&.foundation&.id, name: artwork&.foundation&.name}
             }
         end
 
