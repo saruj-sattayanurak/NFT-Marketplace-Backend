@@ -18,7 +18,7 @@ module Contract
             image_url = @client.call(@contract, "tokenURI", id)
             
             response = HTTParty.get(image_url)
-            raise("Can not get image url") unless response["image"].present?
+            raise("response is equal to #{response}" ) unless response["image"].present?
 
             price = @client.call(@contract, "tokenPrice", id)
 
