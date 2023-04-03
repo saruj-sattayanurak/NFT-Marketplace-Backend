@@ -22,11 +22,11 @@ class Api::V1::ArtworksController < Api::V1::BaseController
 
         begin
             result = cli.nft_data(params[:id].to_i)
-        rescue
-            return render_error("NFT not found 1", 400)
+        rescue => e
+            return render_error(e, 400)
         end
 
-        return render_error("NFT not found 2", 400) unless result.present?
+        return render_error("NFT not found", 400) unless result.present?
 
         render json: result, status: 200
     end
