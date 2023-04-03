@@ -115,14 +115,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_170038) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
-  create_table "university_students", force: :cascade do |t|
-    t.string "name"
-    t.string "faculty"
-    t.string "grade"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "artworks", "foundations"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
