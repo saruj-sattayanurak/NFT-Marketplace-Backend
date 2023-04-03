@@ -19,7 +19,12 @@ class Api::V1::ArtworksController < Api::V1::BaseController
     def show
         # What if id is not present
         cli = Contract::Cli.new
-        result = cli.nft_data(params[:id].to_i)
+
+        begin
+            result = cli.nft_data(params[:id].to_i)
+        rescue
+            return render_error("NFT not found", 400)
+        end
 
         return render_error("NFT not found", 400) unless result.present?
 
@@ -84,9 +89,18 @@ class Api::V1::ArtworksController < Api::V1::BaseController
 
         foundation_wallet = foundation.wallet_address
 
+        metadata = 
+        {
+            "name": artwork.name,
+            "description": "This NFT has been created by the Portus NFT project. Our initiative exclusively generates NFTs from artwork that has been crafted by underprivileged children residing in Thailand.",
+            "creator": "Portus NFT project",
+            "foundation_name": foundation.name,
+            "image": params[:image_url]
+        }
+
         # handle error needed (need fix)
         begin
-            cli.mint(foundation_wallet, artwork.id, params[:image_url], params[:price])
+            cli.mint(foundation_wallet, artwork.id, pin_json(metadata), params[:price])
         rescue => e
             return render_error(e, 400)
         end
@@ -117,6 +131,20 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         encrypted_foundation_identifier = request.headers['Foundation-Identifier']
         foundation_identifier = JWT.decode(encrypted_foundation_identifier, Figaro.env.jwt_secret_key, 'HS256')[0]["foundation_id"]
         foundation = Foundation.find_by(id: foundation_identifier)
+    end
+
+    def pin_json(json_object)
+        headers = {
+            'Content-Type' => 'application/json',
+            'pinata_api_key' => Figaro.env.pinata_api_key,
+            'pinata_secret_api_key' => Figaro.env.pinata_secret_api_key
+            }
+    
+        response = HTTParty.post(Figaro.env.pin_path, headers: headers, body: {"pinataContent": json_object}.to_json)
+
+        raise("Can not pin file to IPFS") unless response['IpfsHash'].present?
+
+        Figaro.env.root_path + response['IpfsHash']
     end
   end
   

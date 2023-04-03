@@ -16,13 +16,17 @@ module Contract
             return unless artwork.present?
 
             image_url = @client.call(@contract, "tokenURI", id)
+            
+            response = HTTParty.get(image_url)
+            raise("Can not get image url") unless response["image"].present?
+
             price = @client.call(@contract, "tokenPrice", id)
 
             {
                 id: id,
                 name: artwork.name,
                 description: artwork.description,
-                image_url: image_url,
+                image_url: response["image"],
                 price: price,
                 status: artwork.status,
                 foundation: {id: artwork&.foundation&.id, name: artwork&.foundation&.name}
