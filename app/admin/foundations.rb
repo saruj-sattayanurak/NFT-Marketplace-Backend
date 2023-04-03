@@ -1,5 +1,5 @@
 ActiveAdmin.register Foundation do
-    permit_params :email, :password, :password_confirmation, :name, :description, :location, :wallet_address, :foundation_type, :foundation_members, :telephone_number, :first_image, :second_image, :third_image
+    permit_params :email, :password, :password_confirmation, :name, :description, :location, :wallet_address, :foundation_type, :foundation_members, :telephone_number, :first_image, :second_image, :third_image, :fourth_image
   
     index do
       selectable_column
@@ -30,6 +30,7 @@ ActiveAdmin.register Foundation do
         f.input :first_image
         f.input :second_image
         f.input :third_image
+        f.input :fourth_image
       end
       f.actions
     end
