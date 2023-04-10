@@ -110,7 +110,8 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         metadata = 
         {
             "name": artwork.name,
-            "description": "This NFT has been created by the Portus NFT project. Our initiative exclusively generates NFTs from artwork that has been crafted by underprivileged children residing in Thailand.",
+            "artwork_description": artwork.description,
+            "nft_description": "This NFT has been created by the Portus NFT project. Our initiative exclusively generates NFTs from artwork that has been crafted by underprivileged children residing in Thailand.",
             "creator": "Portus NFT project",
             "foundation_name": foundation.name,
             "image": params[:image_url]
@@ -120,6 +121,7 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         begin
             cli.mint(foundation_wallet, artwork.id, pin_json(metadata), params[:price])
         rescue => e
+            artwork.delete
             return render_error(e, 400)
         end
 
