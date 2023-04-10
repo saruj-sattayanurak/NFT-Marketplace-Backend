@@ -37,9 +37,9 @@ class Api::V1::ArtworksController < Api::V1::BaseController
 
         artwork = Artwork.find(params[:id].to_i)
         
-        if params[:status] = "unavailable"
+        if params[:status] == "unavailable"
             artwork.unavailable!
-        elsif params[:status] = "available"
+        elsif params[:status] == "available"
             artwork.available!
         else 
             return render_error("Invalid status", 400)
