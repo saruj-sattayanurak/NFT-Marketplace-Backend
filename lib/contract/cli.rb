@@ -32,7 +32,7 @@ module Contract
         def mint(wallet, id, url, price)
             deployer_account = Eth::Key.new priv: Figaro.env.example_private_key
             deployer_account.address
-            @client.transact_and_wait(@contract, "mint", wallet, id, url, price, sender_key: deployer_account, gas_limit: Figaro.env.gas_limit.to_i)
+            @client.transact_and_wait(@contract, "mint", wallet, id, url, price, sender_key: deployer_account, gas_limit: Figaro.env.gas_limit.to_i, gas_price: Figaro.env.gas_price.to_i)
         end
 
         def getOwner(id)
