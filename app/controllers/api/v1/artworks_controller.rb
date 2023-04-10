@@ -31,6 +31,23 @@ class Api::V1::ArtworksController < Api::V1::BaseController
         render json: result, status: 200
     end
 
+    def change_status
+        return render_error("id must exist", 400) unless params[:id].present?
+        return render_error("status must exist", 400) unless params[:status].present?
+
+        artwork = Artwork.find(params[:id].to_i)
+        
+        if params[:status] = "unavailable"
+            artwork.unavailable!
+        elsif params[:status] = "available"
+            artwork.available!
+        else 
+            return render_error("Invalid status", 400)
+        end
+
+        render json: artwork, status: 200
+    end
+
     def owner
         return render_error("Address must not be null", 400) unless params[:address].present?
 
