@@ -24,6 +24,7 @@ module Contract
                 image_url: artwork.url,
                 price: price,
                 status: artwork.status,
+                current_owner: getOwner(id),
                 foundation: {id: artwork&.foundation&.id, name: artwork&.foundation&.name}
             }
         end
