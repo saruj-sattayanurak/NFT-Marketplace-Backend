@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get '/artworks/by_owner/:address', to: 'artworks#owner'
       get '/artworks/by_foundation/:foundation_id', to: 'artworks#nft_by_foundation'
       post '/artworks/sold', to: 'artworks#sold'
+      post 'artworks/change_status', to: 'artworks#change_status'
       resources :foundations, only: [:index, :show]
     end
   end
