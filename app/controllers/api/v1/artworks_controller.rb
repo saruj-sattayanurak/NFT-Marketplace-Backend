@@ -105,6 +105,16 @@ class Api::V1::ArtworksController < Api::V1::BaseController
 
         return render_error(artwork.errors.as_json.values.flatten, 400) unless artwork.save
 
+        status = params[:status]
+        if status == "available"
+            artwork.available!
+        elsif status == "unavailable"
+            artwork.unavailable!
+        else
+            return render_error("invalid status", 400)
+        end
+
+
         foundation_wallet = foundation.wallet_address
 
         metadata = 
@@ -117,7 +127,6 @@ class Api::V1::ArtworksController < Api::V1::BaseController
             "image": params[:image_url]
         }
 
-        # handle error needed (need fix)
         begin
             cli.mint(foundation_wallet, artwork.id, pin_json(metadata), params[:price])
         rescue => e
@@ -144,6 +153,7 @@ class Api::V1::ArtworksController < Api::V1::BaseController
       errors_list << "description can not be null" unless params[:description].present?
       errors_list << "image url can not be null" unless params[:image_url].present?
       errors_list << "price can not be null" unless params[:price].present?
+      errors_list << "status can not be null" unless params[:status].present?
       errors_list
     end
 
