@@ -1,5 +1,5 @@
 ActiveAdmin.register Foundation do
-    permit_params :email, :password, :password_confirmation, :name, :description, :location, :wallet_address, :foundation_type, :foundation_members, :telephone_number, :first_image, :second_image, :third_image, :fourth_image
+    permit_params :email, :password, :password_confirmation, :name, :description, :location, :wallet_address, :foundation_type, :foundation_members, :telephone_number, :first_image, :second_image, :third_image, :fourth_image, :line, :facebook, :website
   
     index do
       selectable_column
@@ -10,6 +10,9 @@ ActiveAdmin.register Foundation do
       column :location
       column :email
       column :wallet_address
+      column :line
+      column :facebook
+      column :website
       actions
     end
   
@@ -31,6 +34,9 @@ ActiveAdmin.register Foundation do
         f.input :second_image
         f.input :third_image
         f.input :fourth_image
+        f.input :line
+        f.input :facebook
+        f.input :website
       end
       f.actions
     end
