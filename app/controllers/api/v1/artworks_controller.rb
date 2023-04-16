@@ -13,7 +13,7 @@ class Api::V1::ArtworksController < Api::V1::BaseController
             end
         end
 
-        render json: {data: nft_list.sort_by { |hash| -hash[:id] } }, status: 200
+        render json: {data: nft_list }, status: 200
     end
 
     def show
