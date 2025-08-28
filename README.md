@@ -1,4 +1,4 @@
-# README
+# Portus: NFT marketplace
 
 Bachelor degree thesis at Kasetsart University
 
