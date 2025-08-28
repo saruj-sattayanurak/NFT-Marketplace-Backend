@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Bachelor degree thesis at Kasetsart University
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Project Portus: Web3 platform to tokenize children’s artworks from the Camillian Social Center into NFTs, listing
+and selling them directly to customers, with all proceeds returned to the foundation.
